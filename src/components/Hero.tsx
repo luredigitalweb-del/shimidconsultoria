@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-azul-escuro/85 via-azul-escuro/30 to-transparent md:bg-gradient-to-r md:from-azul-escuro/90 md:via-azul-escuro/20 md:to-transparent" />
 
       {/* Conteúdo */}
-      <div className="relative w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pt-24 md:pt-48 lg:pt-56 pb-12">
+      <div className="relative w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pt-20 md:pt-48 lg:pt-56 pb-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,15 +43,12 @@ export default function Hero() {
             testados dentro da nossa própria operação.
           </p>
 
-          <div className="mt-7 md:mt-10 flex flex-col sm:flex-row gap-2 items-center md:items-start sm:items-center">
+          <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-2 items-center md:items-start sm:items-center">
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-shiny !text-sm !px-7 !py-4">
               <span>
                 Falar com a Schimid
                 <ArrowRight className="w-4 h-4" />
               </span>
-            </a>
-            <a href="#metodo" className="font-sub text-xs md:text-sm uppercase tracking-[0.15em] text-cinza-claro hover:text-white transition-colors px-2 py-2 md:py-3.5">
-              Conhecer o método →
             </a>
           </div>
         </motion.div>
