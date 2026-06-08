@@ -33,11 +33,9 @@ export default function Hero() {
             <span className="eyebrow">Consultoria para oficinas</span>
           </div>
 
-          <h1 className="font-display font-bold text-[2.3rem] sm:text-6xl md:text-[5.25rem] leading-[0.9] text-white uppercase drop-shadow-[0_6px_30px_rgba(0,0,0,0.55)]">
-            Sua oficina fatura mais de{' '}
-            <span className="shimmer-text">R$80 mil</span>{' '}
-            e ainda{' '}
-            <span className="text-accent-vermelho drop-shadow-[0_2px_12px_rgba(225,25,25,0.45)]">sobra pouco?</span>
+          <h1 className="font-display font-bold text-[2rem] sm:text-6xl md:text-7xl leading-[0.95] text-white uppercase">
+            Você fatura R$80 mil e não vê{' '}
+            <span className="shimmer-text">lucro de verdade?</span>
           </h1>
 
           <p className="mt-5 md:mt-8 text-[14px] md:text-lg text-cinza-claro/85 max-w-xl mx-auto md:mx-0 leading-relaxed">
