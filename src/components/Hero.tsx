@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-2 items-center md:items-start sm:items-center">
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-shiny !text-sm !px-7 !py-4">
               <span>
-                Falar com a Schimid
+                Quero estruturar minha oficina
                 <ArrowRight className="w-4 h-4" />
               </span>
             </a>

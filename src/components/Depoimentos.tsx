@@ -52,7 +52,7 @@ function VideoCard({
         <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-azul-medio">
           <video
             ref={videoRef}
-            src={d.src}
+            src={`${d.src}#t=0.1`}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             playsInline
             muted
