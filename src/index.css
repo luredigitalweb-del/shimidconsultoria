@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-azul-escuro text-cinza-claro font-body antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    background: #1A3A8C;
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sub font-semibold uppercase tracking-[0.15em] text-sm text-white bg-azul-eletrico rounded-full transition-colors duration-200 hover:bg-azul-brilho;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sub font-semibold uppercase tracking-[0.15em] text-sm text-white border border-white/20 rounded-full transition-colors duration-200 hover:border-white hover:bg-white/5;
+  }
+  .section-pad {
+    @apply py-24 md:py-32 px-6 md:px-10;
+  }
+  .container-x {
+    @apply max-w-6xl mx-auto;
+  }
+  .eyebrow {
+    @apply font-sub text-[11px] uppercase tracking-[0.35em] text-azul-brilho;
+  }
+  .rule {
+    @apply h-px w-12 bg-azul-brilho;
+  }
+  .accent-red-line {
+    @apply h-1 w-16 bg-accent-vermelho;
+  }
+  .shimmer-text {
+    background: linear-gradient(
+      100deg,
+      #3B82F6 0%,
+      #3B82F6 35%,
+      #ffffff 50%,
+      #3B82F6 65%,
+      #3B82F6 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3.5s linear infinite;
+  }
+  .shimmer-text-red {
+    background: linear-gradient(
+      100deg,
+      #E11919 0%,
+      #E11919 38%,
+      #FF7A7A 50%,
+      #E11919 62%,
+      #E11919 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3.5s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------- Marquee (faixas rolando) ---------- */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-33.333%); }
+  to { transform: translateX(0); }
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* ---------- Card branco com brilho metálico (shimmer) ---------- */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f3f5 45%, #e5e7eb 100%);
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  animation: card-shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes card-shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+
+/* ---------- Shiny rotating-gradient button ---------- */
+@property --btn-gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --btn-gradient-angle-offset {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --btn-gradient-percent {
+  syntax: '<percentage>';
+  initial-value: 5%;
+  inherits: false;
+}
+@property --btn-gradient-shine {
+  syntax: '<color>';
+  initial-value: #ffffff;
+  inherits: false;
+}
+
+@layer components {
+.btn-shiny {
+  --duration: 3s;
+  --shadow-size: 2px;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline-offset: 4px;
+  padding: 0.7rem 1.4rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  color: white;
+  background:
+    linear-gradient(#2563EB, #2563EB) padding-box,
+    conic-gradient(
+      from calc(var(--btn-gradient-angle) - var(--btn-gradient-angle-offset)),
+      transparent,
+      #3B82F6 var(--btn-gradient-percent),
+      var(--btn-gradient-shine) calc(var(--btn-gradient-percent) * 2),
+      #3B82F6 calc(var(--btn-gradient-percent) * 3),
+      transparent calc(var(--btn-gradient-percent) * 4)
+    ) border-box;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  transition-property: --btn-gradient-angle-offset, --btn-gradient-percent, --btn-gradient-shine;
+  animation: btn-gradient-angle var(--duration) linear infinite;
+}
+
+.btn-shiny::before,
+.btn-shiny::after,
+.btn-shiny > span::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+/* Camada de pontos */
+.btn-shiny::before {
+  --size: calc(100% - var(--shadow-size) * 3);
+  --position: 2px;
+  --space: calc(var(--position) * 2);
+  width: var(--size);
+  height: var(--size);
+  background:
+    radial-gradient(
+      circle at var(--position) var(--position),
+      rgba(255, 255, 255, 0.7) calc(var(--position) / 4),
+      transparent 0
+    ) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  -webkit-mask-image: conic-gradient(
+    from calc(var(--btn-gradient-angle) + 45deg),
+    black,
+    transparent 10% 90%,
+    black
+  );
+  mask-image: conic-gradient(
+    from calc(var(--btn-gradient-angle) + 45deg),
+    black,
+    transparent 10% 90%,
+    black
+  );
+  border-radius: inherit;
+  opacity: 0.35;
+  animation: btn-gradient-angle var(--duration) linear infinite;
+}
+
+/* Rastro shimmer */
+.btn-shiny::after {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, #60A5FA, transparent);
+  -webkit-mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+  animation: btn-gradient-angle calc(var(--duration) / 0.4) linear infinite reverse;
+}
+
+.btn-shiny > span {
+  z-index: 1;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Brilho interno no hover */
+.btn-shiny > span::before {
+  width: 240px;
+  height: 90px;
+  box-shadow: inset 0 -1ex 2rem 4px rgba(132, 132, 255, 0.4);
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-shiny:hover,
+.btn-shiny:focus-visible {
+  --btn-gradient-percent: 20%;
+  --btn-gradient-angle-offset: 95deg;
+  --btn-gradient-shine: #93C5FD;
+}
+
+.btn-shiny:hover > span::before {
+  opacity: 1;
+}
+
+}
+
+@keyframes btn-gradient-angle {
+  to {
+    --btn-gradient-angle: 360deg;
+  }
+}

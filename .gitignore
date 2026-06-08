@@ -1,0 +1,11 @@
+node_modules
+dist
+.vite
+.DS_Store
+*.local
+
+# arquivos de trabalho na raiz (não usados pelo build)
+/*.mp4
+/image*.png
+/*.jpg
+/tsconfig.tsbuildinfo
