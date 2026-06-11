@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { NAV_LINKS, WHATSAPP_URL } from '../lib/constants'
+import { NAV_LINKS } from '../lib/constants'
 import logoSchimid from '../assets/logo-schimid.png'
 
 export default function Navbar() {
@@ -46,9 +46,7 @@ export default function Navbar() {
         </nav>
 
         <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noreferrer"
+          href="#mentoria"
           className="hidden xl:inline-flex btn-shiny"
         >
           <span>Falar com Consultor</span>
@@ -83,9 +81,8 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
+              href="#mentoria"
+              onClick={() => setOpen(false)}
               className="btn-primary mt-4"
             >
               Falar com Consultor

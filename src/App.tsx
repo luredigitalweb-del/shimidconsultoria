@@ -10,6 +10,7 @@ import Depoimentos from './components/Depoimentos'
 import Redes from './components/Redes'
 import CTAFinal from './components/CTAFinal'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <CTAFinal />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

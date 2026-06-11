@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import heroDesktop from '../assets/hero-desktop.png'
 import heroMobile from '../assets/hero-mobile.png'
-import { WHATSAPP_URL } from '../lib/constants'
 
 export default function Hero() {
   return (
@@ -44,7 +43,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-2 items-center md:items-start sm:items-center">
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-shiny !text-sm !px-7 !py-4">
+            <a href="#mentoria" className="btn-shiny !text-sm !px-7 !py-4">
               <span>
                 Falar com a Schimid
                 <ArrowRight className="w-4 h-4" />

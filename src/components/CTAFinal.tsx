@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import oficinaFachada from '../assets/oficina-fachada.png'
-import { WHATSAPP_URL } from '../lib/constants'
 
 export default function CTAFinal() {
   return (
@@ -45,9 +44,7 @@ export default function CTAFinal() {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
+              href="#mentoria"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-sub font-bold uppercase tracking-[0.15em] text-sm md:text-base bg-white text-accent-vermelho hover:bg-azul-escuro hover:text-white transition-all shadow-[0_15px_40px_rgba(0,0,0,0.25)]"
             >
               Falar com a Schimid

@@ -9,7 +9,6 @@ import {
   AlertTriangle,
   ArrowRight,
 } from 'lucide-react'
-import { WHATSAPP_URL } from '../lib/constants'
 
 function Screw({ className }: { className?: string }) {
   return (
@@ -163,7 +162,7 @@ export default function Dores() {
           transition={{ duration: 0.6 }}
           className="mt-12 md:mt-16 flex justify-center"
         >
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-shiny !text-sm !px-7 !py-4">
+          <a href="#mentoria" className="btn-shiny !text-sm !px-7 !py-4">
             <span>
               Falar com a Schimid
               <ArrowRight className="w-4 h-4" />
