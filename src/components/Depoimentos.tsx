@@ -4,6 +4,7 @@ import { Play, X, Volume2, VolumeX, Quote, ArrowRight } from 'lucide-react'
 import dep1 from '../assets/depoimento-1.mp4'
 import dep2 from '../assets/depoimento-2.mp4'
 import dep3 from '../assets/depoimento-3.mp4'
+import dep4 from '../assets/depoimento-4.mp4'
 
 type Depoimento = {
   src: string
@@ -15,6 +16,7 @@ const depoimentos: Depoimento[] = [
   { src: dep1, name: 'Willian', role: 'Dono de oficina' },
   { src: dep2, name: 'Rodrigo', role: 'Dono de oficina' },
   { src: dep3, name: 'Cliente Schimid', role: 'Dono de oficina' },
+  { src: dep4, name: 'Joab', role: 'Regional Sul' },
 ]
 
 function VideoCard({
@@ -203,7 +205,7 @@ export default function Depoimentos() {
           className="
             -mx-6 px-6 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth
             [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
-            md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible
+            md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible
           "
         >
           {depoimentos.map((d, i) => (
