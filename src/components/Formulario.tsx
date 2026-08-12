@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import {
+  AlertTriangle,
   ArrowRight,
   Building2,
   ChevronDown,
+  Loader2,
   Lock,
   MessageSquare,
   Phone,
@@ -13,6 +15,7 @@ import {
 import PhoneInput from './PhoneInput'
 import { DEFAULT_COUNTRY, applyMask, minDigits, type Country } from '../lib/countries'
 import { WHATSAPP_URL } from '../lib/constants'
+import { capturarUtms, enviarLeadParaCrm } from '../lib/crm'
 import { saveLead } from '../lib/lead'
 import { navigate } from '../lib/router'
 
@@ -74,6 +77,8 @@ export default function Formulario() {
   const [equipe, setEquipe] = useState('')
   const [dificuldade, setDificuldade] = useState('')
   const [errors, setErrors] = useState<Errors>({})
+  const [enviando, setEnviando] = useState(false)
+  const [falhaEnvio, setFalhaEnvio] = useState(false)
 
   const telefoneFormatado = `+${country.dial} ${applyMask(country, telefone)}`
 
@@ -100,11 +105,37 @@ export default function Formulario() {
     return next
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    if (enviando) return
+
     const next = validar()
     setErrors(next)
     if (Object.keys(next).length > 0) return
+
+    setFalhaEnvio(false)
+    setEnviando(true)
+
+    const enviado = await enviarLeadParaCrm({
+      nome: nome.trim(),
+      empresa: empresa.trim(),
+      telefone: telefoneFormatado,
+      telefone_e164: `${country.dial}${telefone}`,
+      ddi: country.dial,
+      pais: country.name,
+      colaboradores: equipe,
+      dificuldade: dificuldade.trim(),
+      origem: 'site-schimid-lp',
+      pagina: window.location.href,
+      enviado_em: new Date().toISOString(),
+      ...capturarUtms(),
+    })
+
+    if (!enviado) {
+      setEnviando(false)
+      setFalhaEnvio(true)
+      return
+    }
 
     const fbq = (window as any).fbq
     if (typeof fbq === 'function') fbq('track', 'Lead')
@@ -334,10 +365,43 @@ export default function Formulario() {
                       )}
                     </div>
 
-                    <button type="submit" className="btn-shiny w-full !text-sm !px-7 !py-4 justify-center">
+                    {falhaEnvio && (
+                      <div className="flex items-start gap-3 rounded-lg border border-accent-vermelho/40 bg-accent-vermelho/10 px-4 py-3">
+                        <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0 text-accent-vermelho" />
+                        <p className="text-[13px] leading-relaxed text-white/80">
+                          Não conseguimos enviar agora. Tente novamente em alguns
+                          instantes ou{' '}
+                          <a
+                            href={mensagemUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline font-semibold text-white hover:text-accent-vermelho"
+                          >
+                            fale direto no WhatsApp
+                          </a>
+                          .
+                        </p>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={enviando}
+                      aria-busy={enviando}
+                      className="btn-shiny w-full !text-sm !px-7 !py-4 justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
                       <span>
-                        Quero meu diagnóstico
-                        <ArrowRight className="w-4 h-4" />
+                        {enviando ? (
+                          <>
+                            Enviando...
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          </>
+                        ) : (
+                          <>
+                            Quero meu diagnóstico
+                            <ArrowRight className="w-4 h-4" />
+                          </>
+                        )}
                       </span>
                     </button>
 
