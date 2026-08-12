@@ -162,9 +162,9 @@ export default function Dores() {
           transition={{ duration: 0.6 }}
           className="mt-12 md:mt-16 flex justify-center"
         >
-          <a href="#mentoria" className="btn-shiny !text-sm !px-7 !py-4">
+          <a href="#diagnostico" className="btn-shiny !text-sm !px-7 !py-4">
             <span>
-              Falar com a Schimid
+              Quero mudar esse cenário
               <ArrowRight className="w-4 h-4" />
             </span>
           </a>

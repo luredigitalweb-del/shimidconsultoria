@@ -43,9 +43,9 @@ export default function Hero() {
           </p>
 
           <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-2 items-center md:items-start sm:items-center">
-            <a href="#mentoria" className="btn-shiny !text-sm !px-7 !py-4">
+            <a href="#diagnostico" className="btn-shiny !text-sm !px-7 !py-4">
               <span>
-                Falar com a Schimid
+                Quero meu diagnóstico gratuito
                 <ArrowRight className="w-4 h-4" />
               </span>
             </a>

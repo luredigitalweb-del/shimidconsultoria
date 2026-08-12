@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Check, Star, ArrowRight, MapPin, Calendar } from 'lucide-react'
-import { WHATSAPP_URL } from '../lib/constants'
 
 type Section = {
   title: string
@@ -227,9 +226,7 @@ export default function Servicos() {
 
                 {/* CTA */}
                 <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#diagnostico"
                   className={`group/btn relative mt-8 w-full inline-flex items-center justify-center gap-2 py-4 rounded-full font-sub font-semibold uppercase tracking-[0.15em] text-sm overflow-hidden transition-all ${
                     isBlue
                       ? 'bg-white text-azul-eletrico hover:bg-azul-escuro hover:text-white'
@@ -237,7 +234,7 @@ export default function Servicos() {
                   }`}
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover/btn:-translate-x-1">
-                    Quero saber mais
+                    Solicitar diagnóstico
                   </span>
                   <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </a>

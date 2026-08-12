@@ -46,10 +46,10 @@ export default function Navbar() {
         </nav>
 
         <a
-          href="#mentoria"
+          href="#diagnostico"
           className="hidden xl:inline-flex btn-shiny"
         >
-          <span>Falar com Consultor</span>
+          <span>Diagnóstico gratuito</span>
         </a>
 
         <button
@@ -81,11 +81,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#mentoria"
+              href="#diagnostico"
               onClick={() => setOpen(false)}
               className="btn-primary mt-4"
             >
-              Falar com Consultor
+              Diagnóstico gratuito
             </a>
           </motion.div>
         )}

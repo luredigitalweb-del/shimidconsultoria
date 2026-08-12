@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { WHATSAPP_URL } from '../lib/constants'
 import { PointerHighlight, ShimmerText } from './PointerHighlight'
 
 type Pilar = {
@@ -133,9 +132,7 @@ export default function Metodo() {
             <span className="underline decoration-white/40 decoration-2 underline-offset-[6px]">É o que funciona no dia a dia real.</span>
           </p>
           <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
+            href="#diagnostico"
             className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-5 rounded-full font-sub font-bold uppercase tracking-[0.15em] text-sm md:text-base bg-accent-vermelho text-white hover:bg-vermelho-escuro transition-all duration-300 self-start md:self-auto whitespace-nowrap shadow-[0_15px_45px_rgba(225,25,25,0.5)] hover:scale-[1.04]"
           >
             <span className="absolute inset-0 rounded-full ring-2 ring-accent-vermelho/40 animate-ping opacity-30 [animation-duration:2.5s]" />

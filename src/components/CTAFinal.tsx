@@ -38,16 +38,16 @@ export default function CTAFinal() {
             Pronto para transformar sua oficina?
           </h2>
           <p className="mt-6 text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Fale com nosso time e descubra como a Schimid pode estruturar a
-            gestão, os processos e a liderança do seu negócio.
+            Solicite seu diagnóstico gratuito e descubra como a Schimid pode
+            estruturar a gestão, os processos e a liderança do seu negócio.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
             <a
-              href="#mentoria"
+              href="#diagnostico"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-sub font-bold uppercase tracking-[0.15em] text-sm md:text-base bg-white text-accent-vermelho hover:bg-azul-escuro hover:text-white transition-all shadow-[0_15px_40px_rgba(0,0,0,0.25)]"
             >
-              Falar com a Schimid
+              Quero meu diagnóstico gratuito
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
             <span className="text-xs md:text-sm text-white/70">
