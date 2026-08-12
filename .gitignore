@@ -9,3 +9,5 @@ dist
 /image*.png
 /*.jpg
 /tsconfig.tsbuildinfo
+.vercel
+.env*
